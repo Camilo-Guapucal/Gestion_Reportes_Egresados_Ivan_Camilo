@@ -1,66 +1,140 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Gestión de Reportes de Egresados
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este es un proyecto desarrollado en Laravel para gestionar reportes de egresados. El sistema permite crear, ver, editar y eliminar reportes relacionados con los egresados de la carrera de Ingeniería de Sistemas, facilitando el seguimiento y análisis de la información relevante.
 
-## About Laravel
+## Tabla de Contenidos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. [Requisitos](#requisitos)
+2. [Instalación](#instalación)
+3. [Configuración](#configuración)
+4. [Funcionalidades](#funcionalidades)
+5. [Diseño de la Base de Datos](#diseño-de-la-base-de-datos)
+6. [Seguridad y Manejo del Proyecto](#seguridad-y-manejo-del-proyecto)
+7. [Pruebas Unitarias](#pruebas-unitarias)
+8. [Autores](#autores)
+9. [Derechos Reservados](#derechos-reservados)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requisitos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP >= 8.0
+- Laravel >= 9.x
+- MySQL o cualquier otro motor compatible con Laravel
+- Composer
+- Node.js (si deseas usar Vite para el frontend)
+- Herramientas como `php artisan serve` para ejecutar el proyecto en local
 
-## Learning Laravel
+## Instalación
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Paso 1: Clonar el repositorio
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Primero, clona este repositorio a tu máquina local:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+Paso 2: Instalar dependencias
+Navega a la carpeta del proyecto e instala las dependencias con Composer:
 
-## Laravel Sponsors
+bash
+Copiar código
+cd nombre-del-repositorio
+composer install
+Instala las dependencias de frontend (si las necesitas):
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+bash
+Copiar código
+npm install
+Paso 3: Configurar el archivo .env
+Copia el archivo .env.example a .env y configura la conexión de la base de datos y otras configuraciones relevantes:
 
-### Premium Partners
+bash
+Copiar código
+cp .env.example .env
+Asegúrate de tener la configuración adecuada en tu archivo .env, especialmente en las siguientes líneas:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+ini
+Copiar código
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nombre_de_tu_base_de_datos
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
+Paso 4: Generar clave de la aplicación
+Ejecuta el siguiente comando para generar la clave de la aplicación:
 
-## Contributing
+bash
+Copiar código
+php artisan key:generate
+Paso 5: Ejecutar las migraciones
+Crea la base de datos y ejecuta las migraciones para crear las tablas necesarias:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+bash
+Copiar código
+php artisan migrate
+Paso 6: Ejecutar el servidor
+Finalmente, para ejecutar el proyecto en tu entorno local, usa el comando:
 
-## Code of Conduct
+bash
+Copiar código
+php artisan serve
+Visita http://localhost:8000 para acceder a la aplicación.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Configuración
+El proyecto está configurado para ser ejecutado en el entorno local (APP_ENV=local). Si necesitas desplegar el proyecto en un entorno de producción, asegúrate de configurar adecuadamente el archivo .env y de seguir las prácticas recomendadas para seguridad.
 
-## Security Vulnerabilities
+Funcionalidades
+1. Gestión de Reportes
+Los usuarios pueden agregar, editar, eliminar y consultar reportes de egresados. Los botones disponibles en la interfaz son:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Crear Reporte: Permite crear un nuevo reporte con la información correspondiente.
+Ver Reportes: Muestra una lista de los reportes existentes.
+Editar Reporte: Permite modificar un reporte existente.
+Eliminar Reporte: Permite eliminar un reporte de la base de datos.
+2. Exportación de Reportes
+Los reportes pueden ser exportados en diferentes formatos, incluyendo:
 
-## License
+PDF
+Word
+Excel
+Estos botones se encuentran en la vista principal de los reportes y permiten exportar la información de manera sencilla y eficiente.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Diseño de la Base de Datos
+La base de datos está diseñada para almacenar la información relacionada con los egresados y sus reportes. A continuación se presenta un diseño básico de la base de datos:
+
+Tablas Principales
+egresados: Almacena la información de los egresados, como nombre, fecha de egreso, carrera, entre otros.
+reportes: Contiene los reportes asociados a los egresados, incluyendo detalles del reporte, fecha de creación y modificación, etc.
+La base de datos también cuenta con relaciones entre las tablas, donde un reporte está vinculado a un egresado específico. Las migraciones y seeders están configurados para crear y poblar estas tablas automáticamente.
+
+Relaciones
+Un egresado puede tener muchos reportes. Esta relación se gestiona mediante claves foráneas en la base de datos.
+Seguridad y Manejo del Proyecto
+Este proyecto sigue las mejores prácticas de seguridad de Laravel:
+
+Autenticación y Autorización: Laravel utiliza un sistema robusto de autenticación para garantizar que solo los usuarios autorizados puedan acceder a las funcionalidades del sistema. Asegúrate de que tu archivo .env tenga configuraciones seguras para el manejo de las contraseñas y autenticación.
+
+Protección CSRF: Laravel incluye protección CSRF de forma predeterminada en todos los formularios, lo que ayuda a prevenir ataques de falsificación de solicitudes entre sitios.
+
+Validación de Entrada: Todos los datos que se reciben de los usuarios son validados antes de ser almacenados en la base de datos, lo que ayuda a prevenir inyecciones SQL y otros ataques relacionados.
+
+Seguridad de Archivos: Los archivos exportados (PDF, Word, Excel) son gestionados de manera segura para prevenir la ejecución de código malicioso.
+
+Control de Errores: Laravel maneja los errores y excepciones de manera eficiente, proporcionando mensajes claros para el desarrollo y la producción.
+
+Pruebas Unitarias
+El proyecto incluye pruebas unitarias que permiten verificar el correcto funcionamiento de las funcionalidades principales, como la creación, modificación, y eliminación de reportes, así como las funciones de exportación.
+
+Para ejecutar las pruebas unitarias, usa el siguiente comando:
+
+bash
+Copiar código
+php artisan test
+Esto ejecutará todas las pruebas definidas en el directorio tests.
+
+Autores
+Iván Darío Coral Escobar
+Johan Camilo Guapucal Morán
+Estudiantes de Ingeniería de Sistemas de la Universidad Mariana.
+
+Derechos Reservados
+© 2024 Todos los derechos reservados. Este proyecto es de uso exclusivo para fines educativos y no debe ser distribuido sin el consentimiento de los autores. Todos los derechos de propiedad intelectual relacionados con este proyecto son propiedad de los autores mencionados.

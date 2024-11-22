@@ -122,17 +122,5 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
-
-    //'providers' => [
-    // Otros proveedores de servicio...
-    // Barryvdh\DomPDF\ServiceProvider::class,
-    // Spatie\Permission\PermissionServiceProvider::class,
-    //Maatwebsite\Excel\ExcelServiceProvider::class,
-    //],
-
-    //'aliases' => [
-    // Otros alias...
-    // 'PDF' => Barryvdh\DomPDF\Facade::class,
-    //'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-    //],
+     
 ];

@@ -38,7 +38,7 @@
                         <tr class="bg-gray-200">
                             <th class="px-4 py-3 text-left font-medium text-gray-700">Año de Graduación</th>
                             <th class="px-4 py-3 text-left font-medium text-gray-700">Nombres</th>
-                            <th class="px-4 py-3 text-left font-medium text-gray-700">Apellido</th>
+                            <th class="px-4 py-3 text-left font-medium text-gray-700">Apellidos</th>
                         </tr>
                     </thead>
                     <tbody>

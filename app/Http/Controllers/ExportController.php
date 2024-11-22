@@ -173,41 +173,57 @@ public function exportEmpleabilidadWord()
 
     public function exportEgresadosExcel()
     {
-        // Obtener los datos de egresados desde la base de datos
-        $egresados = Egresado::all(); // Obtiene todos los registros de la tabla egresados
+        // Obtener todos los egresados
+$egresados = Egresado::select('nombres', 'apellidos', 'año_graduacion_Xciclo', 'correo')->get();
 
-        // Crear un nuevo objeto Spreadsheet
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-        
-        // Agregar un título
-        $sheet->setTitle('Reporte de Egresados');
-        $sheet->setCellValue('A1', 'Reporte de Egresados');
+// Verifica si se están obteniendo datos
+if ($egresados->isEmpty()) {
+    return redirect()->back()->with('error', 'No hay egresados disponibles para exportar.');
+}
 
-        // Agregar encabezados de la tabla
-        $sheet->setCellValue('A3', 'Nombre');
-        $sheet->setCellValue('B3', 'Apellido');
-        $sheet->setCellValue('C3', 'Estado Laboral Actual');
-        $sheet->setCellValue('D3', 'Año de Graduación');
+    // Crear un nuevo objeto de Spreadsheet
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
 
-        // Agregar los datos de cada egresado
-        $row = 4; // Comenzar a agregar datos desde la fila 4
-        foreach ($egresados as $egresado) {
-            $sheet->setCellValue('A' . $row, $egresado->nombres);
-            $sheet->setCellValue('B' . $row, $egresado->apellidos);
-            $sheet->setCellValue('C' . $row, $egresado->está_laborando ? 'EMPLEADO' : 'BUSCANDO EMPLEO');
-            $sheet->setCellValue('D' . $row, $egresado->año_graduacion_Xciclo);
-            $row++;
-        }
+    // Agregar un título
+    $sheet->setCellValue('A1', 'Reporte de Egresados por Año');
+    $sheet->mergeCells('A1:D1');
+    $sheet->getStyle('A1')->getFont()->setBold(true)->setSize(16);
+    $sheet->getStyle('A1')->getAlignment()->setHorizontal('center');
 
-        // Establecer las cabeceras para la descarga del archivo Excel
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="reporte_egresados.xlsx"');
+    // Agregar encabezados de la tabla
+    $sheet->setCellValue('A2', 'Nombres');
+    $sheet->setCellValue('B2', 'Apellidos');
+    $sheet->setCellValue('C2', 'Año de Graduación');
+    $sheet->setCellValue('D2', 'Correo');
 
-        // Crear el escritor y guardar el archivo en la salida estándar
-        $writer = new Xlsx($spreadsheet);
-        $writer->save('php://output');
+    // Estilizar encabezados
+    $sheet->getStyle('A2:D2')->getFont()->setBold(true);
+    $sheet->getStyle('A2:D2')->getAlignment()->setHorizontal('center');
 
-        exit;
+    // Agregar los datos de los egresados a la hoja
+    $row = 3; // Inicia en la fila 3
+    foreach ($egresados as $egresado) {
+        $sheet->setCellValue("A{$row}", $egresado->nombres);
+        $sheet->setCellValue("B{$row}", $egresado->apellidos);
+        $sheet->setCellValue("C{$row}", $egresado->año_graduacion_Xciclo);
+        $sheet->setCellValue("D{$row}", $egresado->correo);
+        $row++;
+    }
+
+    // Ajustar ancho de columnas automáticamente
+    foreach (range('A', 'D') as $columnID) {
+        $sheet->getColumnDimension($columnID)->setAutoSize(true);
+    }
+
+    // Guardar el archivo como Excel
+    $fileName = 'egresados_por_año.xlsx';
+    $filePath = storage_path("app/public/{$fileName}");
+
+    $writer = new Xlsx($spreadsheet);
+    $writer->save($filePath);
+
+    // Descargar el archivo y eliminarlo después de enviarlo
+    return response()->download($filePath)->deleteFileAfterSend(true);
     }
 }

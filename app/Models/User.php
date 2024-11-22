@@ -30,7 +30,7 @@ class User extends Authenticatable
         'está_laborando', 
         'lugar_de_trabajo', 
         'correo', 
-        'contraseña', // Este campo corresponde al hash de la contraseña
+        'contraseña',
     ];
     
 

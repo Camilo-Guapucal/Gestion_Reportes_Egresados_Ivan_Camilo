@@ -88,7 +88,7 @@
         <h3 class="text-xl font-bold mb-4">Selecciona un Reporte</h3>
         <p>Por favor selecciona el tipo de reporte que deseas exportar:</p>
         <div class="mt-4">
-            <!--<a href="{{ route('export.egresados.excel') }}" class="block bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition-colors duration-300 mb-2">Reporte de Egresados por Año</a>-->
+            <a href="{{ route('export.egresados.excel') }}" class="block bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition-colors duration-300 mb-2">Reporte de Egresados por Año</a>
             <a href="{{ route('export.empleabilidad.excel') }}" class="block bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition-colors duration-300">Reporte de Empleabilidad</a>
         </div>
         <button onclick="closeExcelModal()" class="mt-4 bg-gray-500 text-white font-bold py-2 px-4 rounded hover:bg-gray-600 transition-colors duration-300">Cancelar</button>

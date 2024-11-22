@@ -36,8 +36,8 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/home', function () {return view('home');  })->middleware('auth');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Rutas protegidas por autenticación
-Route::middleware(['auth'])->group(function () {
+    // Rutas protegidas por autenticación
+    Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
     Route::get('/events', [EventController::class, 'index'])->name('events.index');

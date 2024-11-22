@@ -24,7 +24,7 @@ class LoginController extends Controller
      */
     protected function username()
     {
-        return 'correo'; // Cambiado para usar la columna 'correo' en lugar de 'email'
+        return 'correo'; 
     }
 
     /**
@@ -44,7 +44,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.login'); // Asegúrate de que 'auth.login' corresponde a tu archivo login.blade.php
+        return view('auth.login'); 
     }
 
     /**
@@ -57,7 +57,7 @@ class LoginController extends Controller
     {
         // Validar los datos del formulario
         $request->validate([
-            'correo' => 'required|email',  // Usamos 'correo' en lugar de 'email'
+            'correo' => 'required|email',  
             'password' => 'required',
         ]);
 

@@ -1,0 +1,190 @@
+/*-----Background-----*/
+body {
+    background-image: url('https://s3.envato.com/files/243754334/primag.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*-----Container-----*/
+.container {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.95));
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    margin: 40px auto;
+    max-width: 650px;
+    padding: 35px 50px;
+    color: white;
+}
+
+/*---Heading---*/
+.heading, .title {
+    font-size: 28px;
+    color: #FFC312;
+    font-weight: bold;
+    margin-bottom: 35px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/*---Form Group---*/
+.form-group {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/*---Labels---*/
+label {
+    display: inline-block;
+    width: 160px;
+    text-align: left;
+    color: #FFC312;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 0;
+}
+
+/*---Inputs---*/
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select {
+    width: 320px;
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    height: 45px;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    border-color: #FFC312;
+    box-shadow: 0 0 8px rgba(255, 195, 18, 0.4);
+    outline: none;
+    background-color: white;
+}
+
+/*---Select/Rol---*/
+select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 12 12'%3E%3Cpath d='M6 8.5L1.5 4h9L6 8.5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+/*---Buttons Container---*/
+.buttons-container {
+    margin-top: 35px;
+    text-align: center;
+}
+
+/*---Register Button---*/
+.btn-warning {
+    color: white;
+    background-color: #FFC312;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin: 0 auto 20px auto; /* Centra el botón y añade margen inferior */
+}
+
+.btn-warning:hover {
+    background-color: #ffcd38;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 195, 18, 0.4);
+}
+
+/*---Login Button---*/
+.btn-secondary {
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 220px; /* Aumentado el ancho */
+    height: 45px; /* Altura fija */
+    line-height: 21px; /* Centrado vertical del texto */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin: 0 auto; /* Centra el botón */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-secondary:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: #666;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 25px;
+        width: 90%;
+    }
+    
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    label {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    select {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .btn-warning,
+    .btn-secondary {
+        width: 100%;
+    }
+}
